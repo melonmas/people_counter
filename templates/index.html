@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exhibition People Counter</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Smart Booth Counter</h1>
+            <div class="status-badge" id="cameraStatus">Camera Active</div>
+        </header>
+
+        <main class="dashboard-grid">
+            <!-- Left Column: Video Feed -->
+            <section class="video-panel">
+                <div class="video-container">
+                    <img src="{{ url_for('video_feed') }}" alt="Live Video Feed">
+                    <div class="overlay-grid"></div>
+                </div>
+            </section>
+
+            <!-- Right Column: Stats & Charts -->
+            <section class="stats-panel">
+                <!-- Statistic Cards -->
+                <div class="stats-grid">
+                    <div class="card in-card">
+                        <h3>Total Masuk</h3>
+                        <p id="totalIn">0</p>
+                    </div>
+                    <div class="card out-card">
+                        <h3>Total Keluar</h3>
+                        <p id="totalOut">0</p>
+                    </div>
+                    <div class="card current-card">
+                        <h3>Pengunjung Saat Ini</h3>
+                        <p id="currentInside">0</p>
+                    </div>
+                </div>
+
+                <!-- Chart Container -->
+                <div class="chart-container">
+                    <canvas id="visitorChart"></canvas>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
